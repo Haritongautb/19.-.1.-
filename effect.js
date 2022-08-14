@@ -1,4 +1,4 @@
-"use struct";
+"use strict";
 
 function askNumberOfFilms() {
     let userNumberOfFIlms = +prompt("Сколько фильмов вы уже просмотрели?", "");
