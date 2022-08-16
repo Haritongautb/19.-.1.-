@@ -71,6 +71,29 @@ function showMovieCount(numberOfMovies){
     return showNumberMoviesFunc;
 } 
 
+
+function showMyDB(privatStatus) {
+    if(!(privatStatus)){
+        console.log(personalMovieDB);
+    }
+}
+
+function writeYourGenres() {
+    let personsFavoriteMovie;
+    let i = 0;
+
+    while(i < 3){
+        personsFavoriteMovie = prompt(`Ваш любимый жанр под номером ${i + 1}`, "");
+        if(!personsFavoriteMovie){
+            i--;
+        } else {
+            personalMovieDB.genres[i] = personsFavoriteMovie;
+        }
+        i++;
+    }
+    console.log(personalMovieDB);
+}
+
 const personalMovieDB = {
     count: "",
     movies: {},
