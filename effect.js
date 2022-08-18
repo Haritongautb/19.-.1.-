@@ -11,8 +11,9 @@ function askNumberOfFilms() {
 function askFilmAndRaiting(){
 
     for(let i = 0; i < 2; i++){
-        let film = prompt("Один из последних просмотренных фильмов?", "");
-        let raiting = +prompt("На сколько оцените его?", "");
+        // Метод str.trim(); - убирает лишние пробелы с начала и конца строки
+        let film = prompt("Один из последних просмотренных фильмов?", "").trim();
+        let raiting = +prompt("На сколько оцените его?", "").trim();
 
         if(film == "" || raiting == "" || film === null || raiting === null || film.length >= 50){
             i--;
