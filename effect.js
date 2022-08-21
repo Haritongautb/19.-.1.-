@@ -96,27 +96,32 @@ const personalMovieDB = {
     writeYourGenres: function() {
         let result = ``;
         let personsFavoriteMovie;
-        let i = 0;
-    
-        while(i < 3){
-            personsFavoriteMovie = prompt(`Ваш любимый жанр под номером ${i + 1}`, "");
+        for(let i = 0; i < 3; i++){
+            personsFavoriteMovie = prompt(`Ваш любимый жанр под номером ${i + 1}`,"");
+            
+            if(personsFavoriteMovie){
+                personsFavoriteMovie = personsFavoriteMovie.trim();
 
-            if(!personsFavoriteMovie){
-                i--;
+                if(!personsFavoriteMovie){
+                    i--;
+                } else {
+                    this.genres[i] = personsFavoriteMovie;
+                }
             } else {
-                personalMovieDB.genres[i] = personsFavoriteMovie;
+                i--;
             }
-
-            i++;
         }
 
-        this.genres.forEach((film, index, arr) => {
+        this.genres.forEach((film, index) => {
             result += `Любимый жанр № ${index + 1} - это ${film}\n`;
         });
 
         console.log(result);
-    },
-};
+    }
+};                   
+
+
+personalMovieDB.writeYourGenres();
 
 
 
