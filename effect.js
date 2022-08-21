@@ -50,17 +50,25 @@ const personalMovieDB = {
 
         for(let i = 0; i < 2; i++){
             // Метод str.trim(); - убирает лишние пробелы с начала и конца строки
-            let film = prompt("Один из последних просмотренных фильмов?", "").trim();
-            let raiting = +prompt("На сколько оцените его?", "").trim();
+            let film = prompt("Один из последних просмотренных фильмов?", "");
+            let raiting = prompt("На сколько оцените его?", "");
     
-            if(film == "" || raiting == "" || film === null || raiting === null || film.length >= 50){
+            if(film && raiting){
+                film = film.trim();
+                raiting = raiting.trim();
+
+                if(film == "" || raiting == "" || film === null || raiting === null || film.length >= 50){
+                    i--;
+                } else {
+                    this.movies[film] = raiting;
+                }
+
+            } else if(film == "" || raiting == "" || film === null || raiting === null || film.length >= 50){
                 i--;
-            } else {
-                personalMovieDB.movies[film] = raiting;
             }
         }
     
-        let i = 0;
+        // let i = 0;
         // while(i < 2){
         //     let film = prompt("Один из последних просмотренных фильмов?", "");
         //     let raiting = +prompt("На сколько оцените его?", "");
@@ -83,7 +91,6 @@ const personalMovieDB = {
         //     i++
         // } while(i < 2);
         
-    
         console.log(personalMovieDB);
     },
 
@@ -121,8 +128,8 @@ const personalMovieDB = {
 };                   
 
 
-personalMovieDB.writeYourGenres();
-
+personalMovieDB.askFilmAndRaiting();
+console.log(personalMovieDB);
 
 
 
